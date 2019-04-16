@@ -15,7 +15,7 @@ class Controller {
         $this->session = new Session();
 
         // Instantiating View class
-        $this->view = new View($this->session);
+        $this->view = new View($this->session, $this->model);
     }
 
     function loadModel($name) {
@@ -37,10 +37,12 @@ class Controller {
                 $this->model = new $this->model($this->session);
                 return TRUE;
             } else {
+                $this->model = new Model();
                 // No such model class
                 return FALSE;
             }
         } else {
+            $this->model = new Model();
             // No such model file
             return FALSE;
         }

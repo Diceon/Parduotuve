@@ -3,9 +3,11 @@
 class View {
 
     protected $session;
-            
-    function __construct($session) {
+    protected $model;
+
+    function __construct($session, $model) {
         $this->session = $session;
+        $this->model = $model;
     }
 
     public function render($name, $data = NULL) {

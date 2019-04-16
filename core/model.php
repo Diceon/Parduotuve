@@ -15,4 +15,22 @@ class Model {
         }
     }
 
+    function getCategories() {
+
+        $result = mysqli_query($this->db, "SELECT * FROM categories");
+
+        if ($result && mysqli_num_rows($result) > 0) {
+
+            $categories = array();
+
+            while ($category = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                array_push($categories, $category);
+            }
+
+            return $categories;
+        } else {
+            return FALSE;
+        }
+    }
+
 }
