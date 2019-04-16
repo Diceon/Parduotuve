@@ -9,7 +9,7 @@ class Login extends Controller {
             $login_result = $this->model->login(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING), filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
             if ($login_result) {
                 $this->session->login();
-                header('location: index');
+                header('location: /parduotuve/');
             } else {
                 $this->view->render('login/index', 'Wrong username / password');
             }

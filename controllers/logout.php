@@ -6,9 +6,9 @@ class Logout extends Controller {
         parent::__construct();
         if ($this->session->isLogged()) {
             $this->session->logout();
-            header('location: index');
+            header('location: /parduotuve/');
         } else {
-            header('location: index');
+            header('location: /parduotuve/');
         }
     }
 
