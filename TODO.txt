@@ -1,0 +1,11 @@
+
+// Prevent access to core files
+// Add config file
+
+// Add session class
+// add login / register
+
+// Add meniu ( Categories )
+// Add products
+
+// Add shopping cart - Save method? - Database / session / local storage ???
