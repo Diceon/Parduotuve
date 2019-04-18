@@ -1,8 +1,40 @@
 
-        <!-- Main END -->
+</main>
+<!-- Main END -->
 
-        <!-- Footer BEGIN -->
-        <!-- Footer END -->
+<!-- Footer BEGIN -->
+<footer>
+    <div class="footer-top container d-flex justify-content-around flex-column flex-md-row">
+        <div class="about-us py-4 px-2 ">
+            <div class="text-white">123</div>
+            <div>
+                Lorem ipsum...
+            </div>
+        </div>
+        <div class="about-us py-4 px-2">
+            <div class="text-white">
+                456
+            </div>
+            <div>
+                Lorem ipsum...
+            </div>
+        </div>
+        <div class="about-us py-4 px-2">
+            <div class="text-white">
+                789
+            </div>
+            <div>
+                Lorem ipsum...
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom container">
+        <div class="text-center py-2">
+            <span>Copyright © 2019 - All Rights Reserved</span>
+        </div>
+    </div>
+</footer>
+<!-- Footer END -->
 
     </div>
     

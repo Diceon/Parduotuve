@@ -4,9 +4,15 @@
     box-sizing: border-box;
 }
 
+/*  HEADER BEGIN  */
+.header-top nav {
+    background-color: #262626;
+    color: white;
+}
+
 .header-middle img {
     object-fit: cover;
-    max-height: 250px;
+    height: 250px;
 }
 
 .header-middle .carousel-caption {
@@ -16,3 +22,21 @@
 .header-bottom .fa-shopping-cart {
     font-size: 25px;
 }
+/* HEADER END */
+
+/*  MAIN BEGIN   */
+/*  MAIN END   */
+
+/*  FOOTER BEGIN    */
+footer {
+    background-color: #262626;
+    color: #6a6a6a;
+}
+
+footer .footer-top {
+}
+
+footer .footer-bottom {
+    background-color: #222222;
+}
+/*  FOOTER END    */

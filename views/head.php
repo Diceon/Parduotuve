@@ -24,8 +24,9 @@
 <div class="container">
         <?php var_dump($this->session->isLogged()); ?>
 <!-- Header BEGIN -->
+<header>
     <div class="header-top">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#">LOGO</a>
             <div class="ml-auto">
 <?php if ($this->session->isLogged()) { ?>
@@ -125,6 +126,8 @@
             </div>
         </ul>
     </div>
+</header>
 <!-- Header END -->
         
 <!-- Main BEGIN -->
+<main class="container">
