@@ -29,7 +29,7 @@ class Model {
 
             return $categories;
         } else {
-            return FALSE;
+            return array();
         }
     }
 

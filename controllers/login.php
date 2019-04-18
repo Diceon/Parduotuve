@@ -14,7 +14,11 @@ class Login extends Controller {
                 $this->view->render('login/index', 'Wrong username / password');
             }
         } else {
-            $this->view->render('login/index');
+            if (!$this->session->isLogged()) {
+                $this->view->render('login/index');
+            } else {
+                header('location: /parduotuve/');
+            }
         }
     }
 
