@@ -25,13 +25,6 @@
 /* HEADER END */
 
 /*  MAIN BEGIN   */
-.card {
-    transition: all 0.25s;
-}
-
-html .card:hover {
-    transform: rotate(180deg);
-}
 /*  MAIN END   */
 
 /*  FOOTER BEGIN    */

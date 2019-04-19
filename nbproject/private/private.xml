@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/Parduotuve/controllers/login.php</file>
-            <file>file:/C:/xampp/htdocs/Parduotuve/core/model.php</file>
-            <file>file:/C:/xampp/htdocs/Parduotuve/core/view.php</file>
-            <file>file:/C:/xampp/htdocs/Parduotuve/views/login/index.php</file>
-            <file>file:/C:/xampp/htdocs/Parduotuve/style.css</file>
-            <file>file:/C:/xampp/htdocs/Parduotuve/TODO.txt</file>
-            <file>file:/C:/xampp/htdocs/Parduotuve/views/head.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
