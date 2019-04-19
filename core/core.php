@@ -18,7 +18,7 @@ class Core {
 
                 // Setting current controller to requested
                 $this->controller = $url[0];
-                unset($url[0]);
+                //unset($url[0]); // REMOVE ?
             } else {
                 $this->controller = 'errno';
             }
@@ -39,7 +39,7 @@ class Core {
 
     function parseUrl() {
         if (filter_has_var(INPUT_GET, 'url')) {
-            return explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
+            return explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_STRING));
         }
     }
 

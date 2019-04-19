@@ -33,4 +33,23 @@ class Model {
         }
     }
 
+    function getProducts($category = NULL) {
+
+        $result = mysqli_query($this->db, "SELECT * FROM products" . ($category != NULL ? " WHERE category_id = (SELECT id FROM categories WHERE name = '" . $category . "') LIMIT 1" : ""));
+
+        if ($result) {
+
+            $products = array();
+
+            while ($product = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                array_push($products, $product);
+            }
+
+            return $products;
+        } else {
+            echo mysqli_error($this->db);
+            return array();
+        }
+    }
+
 }

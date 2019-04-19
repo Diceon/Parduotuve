@@ -22,7 +22,7 @@
 <body>
 
 <div class="container">
-        <?php var_dump($this->session->isLogged()); ?>
+    
 <!-- Header BEGIN -->
 <header>
     <div class="header-top">

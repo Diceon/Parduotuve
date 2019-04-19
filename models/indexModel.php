@@ -6,8 +6,4 @@ class indexModel extends Model {
         parent::__construct();
     }
 
-    function getProducts() {
-        return 1232;
-    }
-
 }

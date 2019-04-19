@@ -3,8 +3,7 @@
 // Add config file
 
 
-// Add meniu ( Categories )
-// Add products
+Add product / category not found
 
 // Add shopping cart - Save method? - Database / session / local storage ???
 

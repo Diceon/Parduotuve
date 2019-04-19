@@ -5,10 +5,15 @@ class View {
     protected $session;
     protected $model;
     protected $page;
+    private $data;
 
     function __construct($session, $model) {
         $this->session = $session;
         $this->model = $model;
+    }
+
+    public function addData($data, $key) {
+        $this->data[$key] = $data;
     }
 
     public function render($name, $data = NULL) {
