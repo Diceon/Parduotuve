@@ -6,5 +6,3 @@
 Add product / category not found
 
 // Add shopping cart - Save method? - Database / session / local storage ???
-
-// REDO view data?

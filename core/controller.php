@@ -15,7 +15,7 @@ class Controller {
         $this->session = new Session();
 
         // Instantiating View class
-        $this->view = new View($this->session, $this->model);
+        $this->view = new View($this->session);
         $this->view->addData($this->model->getCategories(), 'categories');
     }
 

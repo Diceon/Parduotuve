@@ -3,13 +3,11 @@
 class View {
 
     protected $session;
-    protected $model;
     protected $page;
     private $data;
 
-    function __construct($session, $model) {
+    function __construct($session) {
         $this->session = $session;
-        $this->model = $model;
     }
 
     public function addData($data, $key) {

@@ -35,7 +35,7 @@ class Model {
 
     function getProducts($category = NULL) {
 
-        $result = mysqli_query($this->db, "SELECT * FROM products" . ($category != NULL ? " WHERE category_id = (SELECT id FROM categories WHERE name = '" . $category . "') LIMIT 1" : ""));
+        $result = mysqli_query($this->db, "SELECT products.*, categories.name as 'category' FROM products LEFT JOIN categories ON categories.id = products.category_id" . ($category != NULL ? " WHERE category_id = (SELECT id FROM categories WHERE name = '" . $category . "') LIMIT 1" : ""));
 
         if ($result) {
 
@@ -44,7 +44,7 @@ class Model {
             while ($product = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 array_push($products, $product);
             }
-
+            
             return $products;
         } else {
             echo mysqli_error($this->db);
