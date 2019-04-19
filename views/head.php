@@ -21,15 +21,16 @@
 
 <body>
 
-<div class="container">
+<div class="container p-0">
     
 <!-- Header BEGIN -->
-<header>
+<header class="shadow">
     <div class="header-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#">LOGO</a>
             <div class="ml-auto">
 <?php if ($this->session->isLogged()) { ?>
+                <a href="profile"><button type="button" class="btn btn-light">Profile</button></a>
                 <a href="logout"><button type="button" class="btn btn-light">Logout</button></a>
 <?php } else { ?>
                 <a href="login"><button type="button" class="btn btn-light">Login</button></a>
@@ -80,47 +81,26 @@
     </div>
     <div class="header-bottom my-2">
         <ul class="nav nav-tabs">
-            <?php $menu = array("Home" => "", "Catalog" => $this->model->getCategories(), "Blog" => "blog", "About" => "about"); ?>
+<?php $menu = array("Home" => "", "Catalog" => $this->data['categories'], "Blog" => "blog", "About" => "about"); ?>
             
-            <?php foreach ($menu as $key => $value) { ?>
-                <?php if(is_array($menu[$key])) { ?>
+<?php foreach ($menu as $key => $value) { ?>
+<?php if(is_array($menu[$key])) { ?>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $key ?></a>
                 <div class="dropdown-menu">
-                <?php foreach ($menu[$key] as $subkey => $submenu) { ?>
-                    <a class="dropdown-item" href="/parduotuve/<?php echo strtolower($key) . "/" . $subkey; ?>"><?php echo $submenu["name"]; ?></a>
-                <?php } ?>
+<?php foreach ($menu[$key] as $subkey => $submenu) { ?>
+                    <a class="dropdown-item" href="/parduotuve/<?php echo strtolower($key) . "/" . $submenu['name']; ?>"><?php echo $submenu["name"]; ?></a>
+<?php } ?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/parduotuve/<?php echo strtolower($key); ?>"><?php echo $key;?></a>
                 </div>
             </li>
-                <?php } else { ?>
+<?php } else { ?>
             <li class="nav-item">
                 <a class="nav-link<?php echo $this->page == $value ? " active" : ""; ?>" href="/parduotuve/<?php echo $value; ?>"><?php echo $key; ?></a>
             </li>
-                <?php } ?>
-            <?php } ?>
-<!--            
-            <li class="nav-item">
-                <a class="nav-link" href="/parduotuve/">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catalog</a>
-                <div class="dropdown-menu">
-                <?php foreach ($this->model->getCategories() as $category) { ?>
-                    <a class="dropdown-item" href="/parduotuve/catalog/<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
-                <?php } ?>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/parduotuve/catalog">Catalogs</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/parduotuve/blog">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/parduotuve/about">About</a>
-            </li>-->
-
+<?php } ?>
+<?php } ?>
             <div class="ml-auto mx-3 d-flex">
                 <a href="/parduotuve/cart" class="m-auto"><i class="fas fa-shopping-cart">Cart (0)</i></a>
             </div>
@@ -130,4 +110,4 @@
 <!-- Header END -->
         
 <!-- Main BEGIN -->
-<main class="container">
+<main class="container p-0">

@@ -25,6 +25,39 @@
 /* HEADER END */
 
 /*  MAIN BEGIN   */
+.card  {
+    position: relative;
+}
+
+.card img {
+    object-fit: scale-down;
+    height: 280px;
+    transition: transform .25s;
+}
+
+.card:hover img {
+    transform: scale(0.9);
+}
+
+.card .new {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline;
+    padding: 5px 15px;
+    background-color: rgba(200, 0, 0, .75);
+    color: white;
+}
+
+.card .recommended {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline;
+    padding: 5px 15px;;
+    background-color: #222222;
+    color: white;
+}
 /*  MAIN END   */
 
 /*  FOOTER BEGIN    */
