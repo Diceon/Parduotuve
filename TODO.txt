@@ -2,7 +2,10 @@
 // Prevent access to core files
 // Add config file
 
+update login / register controllers
 
 Add product / category not found
+
+add category page with images
 
 // Add shopping cart - Save method? - Database / session / local storage ???

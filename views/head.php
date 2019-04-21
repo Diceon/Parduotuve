@@ -30,11 +30,11 @@
             <a class="navbar-brand" href="#">LOGO</a>
             <div class="ml-auto">
 <?php if ($this->session->isLogged()) { ?>
-                <a href="profile"><button type="button" class="btn btn-light">Profile</button></a>
-                <a href="logout"><button type="button" class="btn btn-light">Logout</button></a>
+                <a href="/parduotuve/profile"><button type="button" class="btn btn-light">Profile</button></a>
+                <a href="/parduotuve/logout"><button type="button" class="btn btn-light">Logout</button></a>
 <?php } else { ?>
-                <a href="login"><button type="button" class="btn btn-light">Login</button></a>
-                <a href="register"><button type="button" class="btn btn-light">Register</button></a>
+                <a href="/parduotuve/login"><button type="button" class="btn btn-light">Login</button></a>
+                <a href="/parduotuve/register"><button type="button" class="btn btn-light">Register</button></a>
 <?php } ?>
             </div>
         </nav>
