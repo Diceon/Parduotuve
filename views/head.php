@@ -30,6 +30,7 @@
             <a class="navbar-brand" href="#">LOGO</a>
             <div class="ml-auto">
 <?php if ($this->session->isLogged()) { ?>
+<?php echo $this->session->isAdmin() ? '<a href="/parduotuve/admin"><button type="button" class="btn btn-light">Admin</button></a>' : '123'; ?>
                 <a href="/parduotuve/profile"><button type="button" class="btn btn-light">Profile</button></a>
                 <a href="/parduotuve/logout"><button type="button" class="btn btn-light">Logout</button></a>
 <?php } else { ?>
@@ -81,7 +82,7 @@
     </div>
     <div class="header-bottom my-2">
         <ul class="nav nav-tabs">
-<?php $menu = array("Home" => "", "Catalog" => $this->data['categories'], "Blog" => "blog", "About" => "about"); ?>
+<?php $menu = array("Home" => "", "Catalog" => isset($this->data['categories']) ? $this->data['categories'] : null, "Blog" => "blog", "About" => "about"); ?>
             
 <?php foreach ($menu as $key => $value) { ?>
 <?php if(is_array($menu[$key])) { ?>
