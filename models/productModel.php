@@ -10,10 +10,7 @@ class ProductModel extends Model {
         $result = mysqli_query($this->db, "SELECT * FROM products WHERE name = '" . $product . "'");
 
         if ($result && mysqli_num_rows($result) > 0) {
-
-            $product = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-            return $product;
+            return mysqli_fetch_array($result, MYSQLI_ASSOC);
         } else {
             return array();
         }
