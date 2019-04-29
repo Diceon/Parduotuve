@@ -66,6 +66,16 @@
 .btn:hover {
     transform: scale(1.025);
 }
+
+.forum-back {
+    bottom: 5px;
+    left: 10px;
+}
+
+.forum-post {
+    bottom: 5px;
+    right: 10px;
+}
 /*  MAIN END   */
 
 /*  FOOTER BEGIN    */
