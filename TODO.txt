@@ -4,8 +4,6 @@
 
 // Add shopping cart - Save method? - Database / session / local storage ???
 
-update product info view
-
 prepare admin page
 
 implement reply/edit to forum?

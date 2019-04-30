@@ -6,8 +6,8 @@ class ProductModel extends Model {
         parent::__construct();
     }
 
-    function getProduct($product) {
-        $result = mysqli_query($this->db, "SELECT * FROM products WHERE name = '" . $product . "'");
+    function getProduct($product_id) {
+        $result = mysqli_query($this->db, "SELECT * FROM products WHERE id = '" . $product_id . "'");
 
         if ($result) {
             if (mysqli_num_rows($result) > 0) {

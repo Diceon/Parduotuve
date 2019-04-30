@@ -3,6 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* GENERAL BEGIN */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+/* GENERAL END  */
 
 /*  HEADER BEGIN  */
 .header-top nav {
@@ -39,7 +50,7 @@
     transform: scale(0.9);
 }
 
-.card .new {
+.new {
     position: absolute;
     top: 0;
     left: 0;
@@ -49,7 +60,7 @@
     color: white;
 }
 
-.card .recommended {
+.recommended {
     position: absolute;
     top: 0;
     right: 0;

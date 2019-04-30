@@ -7,11 +7,11 @@ class Product extends Controller {
 
         if (isset($args[1])) {
             $this->view->addData('product', $this->model->getProduct($args[1]));
+            $this->view->render('product/index');
         } else {
             header('location: /parduotuve/catalog');
         }
 
-        $this->view->render('product/index');
     }
 
 }
