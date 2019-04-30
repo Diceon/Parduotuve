@@ -2,18 +2,14 @@
 // Prevent access to core files
 // Add config file
 
-update login / register controllers
-
 Add product / category not found
 
 add category page with images
 
 // Add shopping cart - Save method? - Database / session / local storage ???
 
-create blog page
-
-create about us page
-
 update product info view
 
 prepare admin page
+
+implement reply/edit to forum?

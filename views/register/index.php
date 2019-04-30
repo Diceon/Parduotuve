@@ -19,4 +19,7 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block">Register</button>
     </form>
+    <div class="text-center mt-3">
+        <a href="/parduotuve/login">Already have account?</a>
+    </div>
 </div>

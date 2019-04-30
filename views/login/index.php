@@ -13,4 +13,7 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
     </form>
+    <div class="text-center mt-3">
+        <a href="/parduotuve/register">New member?</a>
+    </div>
 </div>
