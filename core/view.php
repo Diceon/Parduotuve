@@ -10,7 +10,7 @@ class View {
         $this->session = $session;
     }
 
-    public function addData($data, $key) {
+    public function addData($key, $data) {
         $this->data[$key] = $data;
     }
 

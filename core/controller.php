@@ -16,7 +16,7 @@ class Controller {
 
         // Instantiating View class
         $this->view = new View($this->session);
-        $this->view->addData($this->model->getCategories(), 'categories');
+        $this->view->addData('categories', $this->model->getCategories());
     }
 
     function loadModel($name) {

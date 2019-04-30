@@ -6,68 +6,86 @@ class blogModel extends Model {
         parent::__construct();
     }
 
-    function getForums() {
-        $result = mysqli_query($this->db, "SELECT forums.*, count(forum_posts.id) as 'posts' FROM forums LEFT JOIN forum_posts ON forum_posts.forum = forums.id GROUP BY forums.id");
-
-        if ($result && mysqli_num_rows($result) > 0) {
-
-            $forums = array();
-
-            while ($forum = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                array_push($forums, filter_var_array($forum, FILTER_SANITIZE_STRING));
-            }
-
-            return $forums;
-        } else {
-            return array();
+    function resultToArray($result) {
+        $list = array();
+        while ($i = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($list, $i);
         }
+        return $list;
     }
 
-    function getForumPosts($forum) {
-        $result = mysqli_query($this->db, "SELECT forum_posts.id, forums.name AS 'forum', users.username, forum_posts.name, forum_posts.date FROM forum_posts LEFT JOIN users ON users.id = forum_posts.user LEFT JOIN forums ON forums.id = forum_posts.forum WHERE forums.name = '" . $forum . "'");
+    function forumExists($forum_id) {
+        $result = mysqli_query($this->db, "SELECT * FROM forums WHERE id = '" . $forum_id . "'");
 
-        if ($result && mysqli_num_rows($result) > 0) {
-
-            $forumPosts = array();
-
-            while ($forumPost = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                array_push($forumPosts, filter_var_array($forumPost, FILTER_SANITIZE_STRING));
-            }
-
-            return $forumPosts;
-        } else {
-            return array();
-        }
-    }
-
-    function getForumPost($id) {
-        $result = mysqli_query($this->db, "SELECT forum_posts.*, users.username as 'user', forums.name as 'forum' FROM forum_posts LEFT JOIN users ON users.id = forum_posts.user LEFT JOIN forums ON forums.id = forum_posts.forum WHERE forum_posts.id = '" . $id . "'");
-
-        if ($result && mysqli_num_rows($result) > 0) {
-            return filter_var_array(mysqli_fetch_array($result, MYSQLI_ASSOC), FILTER_SANITIZE_STRING);
-        } else {
-            return array();
-        }
-    }
-
-    function post($forum, $user, $name, $content) {
-
-        $forumResult = mysqli_query($this->db, "SELECT id FROM forums WHERE name = '" . $forum . "' LIMIT 1");
-        $userResult = mysqli_query($this->db, "SELECT id FROM users WHERE username = '" . $user . "' LIMIT 1");
-
-        echo mysqli_error($this->db);
-        
-        if ($forumResult && mysqli_num_rows($forumResult) > 0 && $userResult && mysqli_num_rows($userResult)) {
-            $result = mysqli_query($this->db, "INSERT INTO forum_posts (forum, user, name, message) VALUES ('" . mysqli_fetch_array($forumResult)['id'] . "', '" . mysqli_fetch_array($userResult)['id'] . "', '" . $name . "', '" . $content . "')");
-
-            if ($result) {
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
                 return TRUE;
             } else {
                 return FALSE;
             }
-            
+        } else {
+            return mysqli_error($this->db);
+        }
+    }
+
+    function getForums() {
+        $result = mysqli_query($this->db, "SELECT forums.*, count(forum_posts.id) as 'posts' FROM forums LEFT JOIN forum_posts ON forum_posts.forum = forums.id GROUP BY forums.id");
+
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                return $this->resultToArray($result);
+            } else {
+                return array();
+            }
+        } else {
+            return mysqli_error($this->db);
+        }
+    }
+
+    function getForumPosts($forum_id) {
+
+        if ($this->forumExists($forum_id)) {
+            $result = mysqli_query($this->db, "SELECT forum_posts.id, forums.name AS 'forum', users.username, forum_posts.name, forum_posts.date FROM forum_posts LEFT JOIN users ON users.id = forum_posts.user LEFT JOIN forums ON forums.id = forum_posts.forum WHERE forums.id = '" . $forum_id . "'");
+
+            if ($result) {
+                if (mysqli_num_rows($result) > 0) {
+                    return $this->resultToArray($result);
+                } else {
+                    return array();
+                }
+            } else {
+                return mysqli_error($this->db);
+            }
         } else {
             return FALSE;
+        }
+    }
+
+    function getForumPost($post_id) {
+        $result = mysqli_query($this->db, "SELECT forum_posts.*, users.username as 'user', forums.name as 'forum', forums.id as 'forum_id' FROM forum_posts LEFT JOIN users ON users.id = forum_posts.user LEFT JOIN forums ON forums.id = forum_posts.forum WHERE forum_posts.id = '" . $post_id . "'");
+
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                return filter_var_array(mysqli_fetch_array($result, MYSQLI_ASSOC), FILTER_SANITIZE_STRING);
+            } else {
+                return array();
+            }
+        } else {
+            return mysqli_error($this->db);
+        }
+    }
+
+    function post($forum_id, $user_id, $name, $content) {
+        if ($this->forumExists($forum_id)) {
+            $result = mysqli_query($this->db, "INSERT INTO forum_posts (forum, user, name, message) VALUES ('" . $forum_id . "', '" . $user_id . "', '" . $name . "', '" . $content . "')");
+
+            if ($result) {
+                return mysqli_insert_id($this->db);
+            } else {
+                return mysqli_error($this->db);
+            }
+        } else {
+            return ["Forum not found"];
         }
     }
 

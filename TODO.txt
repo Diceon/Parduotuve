@@ -13,3 +13,5 @@ update product info view
 prepare admin page
 
 implement reply/edit to forum?
+
+logout - should you destroy session?

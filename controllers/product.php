@@ -6,7 +6,7 @@ class Product extends Controller {
         parent::__construct();
 
         if (isset($args[1])) {
-            $this->view->addData($this->model->getProduct($args[1]), 'product');
+            $this->view->addData('product', $this->model->getProduct($args[1]));
         } else {
             header('location: /parduotuve/catalog');
         }

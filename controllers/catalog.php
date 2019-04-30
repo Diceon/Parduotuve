@@ -6,7 +6,7 @@ class Catalog extends Controller {
         parent::__construct();
 
         if (isset($args[1])) {
-            $this->view->addData($this->model->getProducts($args[1]), "products");
+            $this->view->addData("products", $this->model->getProducts($args[1]));
         }
         
         $this->view->render('catalog/index');

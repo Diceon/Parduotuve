@@ -30,7 +30,7 @@
             <a class="navbar-brand" href="#">LOGO</a>
             <div class="ml-auto">
 <?php if ($this->session->isLogged()) { ?>
-<?php echo $this->session->isAdmin() ? '<a href="/parduotuve/admin"><button type="button" class="btn btn-light">Admin</button></a>' : '123'; ?>
+<?php echo $this->session->isAdmin() ? '<a href="/parduotuve/admin"><button type="button" class="btn btn-light">Admin</button></a>' : ''; ?>
                 <a href="/parduotuve/profile"><button type="button" class="btn btn-light">Profile</button></a>
                 <a href="/parduotuve/logout"><button type="button" class="btn btn-light">Logout</button></a>
 <?php } else { ?>
