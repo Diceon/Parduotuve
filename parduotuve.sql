@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2019 at 12:36 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 5.6.40
+-- Generation Time: Apr 30, 2019 at 02:01 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,6 +47,50 @@ INSERT INTO `categories` (`id`, `name`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `forums`
+--
+
+CREATE TABLE `forums` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_lithuanian_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_lithuanian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_lithuanian_ci;
+
+--
+-- Dumping data for table `forums`
+--
+
+INSERT INTO `forums` (`id`, `name`, `description`) VALUES
+(1, 'General', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_posts`
+--
+
+CREATE TABLE `forum_posts` (
+  `id` int(11) NOT NULL,
+  `forum` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_lithuanian_ci NOT NULL,
+  `message` text COLLATE utf8_lithuanian_ci NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_lithuanian_ci;
+
+--
+-- Dumping data for table `forum_posts`
+--
+
+INSERT INTO `forum_posts` (`id`, `forum`, `user`, `name`, `message`, `date`) VALUES
+(1, 1, 1, 'Testing...', 'Hello World!', '2019-04-27 23:02:18'),
+(2, 1, 2, '321LMAO <?php echo 123; ?>', 'lasdadsadas\r\n<br>\r\n<br>\r\n<br>\r\n<br>', '2019-04-28 00:16:11'),
+(3, 1, 1, 'dbasbdasb', 'bas', '2019-04-29 23:48:58'),
+(4, 1, 2, 'hghh', 'fghfghfhfghf', '2019-04-29 23:49:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -71,7 +115,8 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `name`, `category_id`, `code`, `price`, `availability`, `brand`, `image`, `description`, `is_new`, `is_recommended`, `status`) VALUES
 (1, 'Timberland', 3, 123456789, 99.9, 100, 'Timberland', 'timberland-black.jpg', '', 1, 1, 1),
-(2, 'AXC Black', 2, 321456987, 0.99, 1337, 'Lmao', 'axc-black.jpg', 'Good pants?', 1, 0, 1);
+(2, 'AXC Black', 2, 321456987, 0.99, 1337, 'Lmao', 'axc-black.jpg', 'Good pants?', 1, 0, 1),
+(4, 'AMI', 1, 456789123, 4.99, 100, 'AMI', 'ami-mens-plain-white-shirt-regular-fit-poplin-formal-shirt.jpg', 'Mens Plain White Shirt, Regular Fit Poplin Formal Shirt', 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -82,7 +127,9 @@ INSERT INTO `products` (`id`, `name`, `category_id`, `code`, `price`, `availabil
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -90,9 +137,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `register_date`) VALUES
-(1, '123', '123', '2019-04-15 20:27:26'),
-(2, '321', '321', '2019-04-16 06:04:23');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `admin`, `register_date`) VALUES
+(1, '123', '', '123', 1, '2019-04-15 20:27:26'),
+(2, '321', '', '321', 0, '2019-04-16 06:04:23'),
+(3, '4444444', 'asdas@asd', 'test', 0, '2019-04-29 22:58:08');
 
 --
 -- Indexes for dumped tables
@@ -103,6 +151,20 @@ INSERT INTO `users` (`id`, `username`, `password`, `register_date`) VALUES
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `forums`
+--
+ALTER TABLE `forums`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `forum_posts`
+--
+ALTER TABLE `forum_posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_users_id` (`user`),
+  ADD KEY `fk_forum_forums_id` (`forum`);
 
 --
 -- Indexes for table `products`
@@ -128,20 +190,39 @@ ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `forums`
+--
+ALTER TABLE `forums`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `forum_posts`
+--
+ALTER TABLE `forum_posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `forum_posts`
+--
+ALTER TABLE `forum_posts`
+  ADD CONSTRAINT `fk_forum_forums_id` FOREIGN KEY (`forum`) REFERENCES `forums` (`id`),
+  ADD CONSTRAINT `fk_user_users_id` FOREIGN KEY (`user`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `products`
