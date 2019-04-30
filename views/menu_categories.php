@@ -3,7 +3,7 @@
             <h3 class="text-center">Catalogs</h3>
 <?php foreach ($this->data['categories'] as $key => $category) { ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/parduotuve/catalog/<?php echo mb_strtolower($category['name']); ?>"><?php echo $category['name']; ?></a>
+                    <a class="nav-link" href="/parduotuve/catalog/<?php echo mb_strtolower($category['id']); ?>"><?php echo $category['name']; ?></a>
                 </li>
 <?php } ?>
 <?php } else { ?>

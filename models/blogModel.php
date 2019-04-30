@@ -6,14 +6,6 @@ class blogModel extends Model {
         parent::__construct();
     }
 
-    function resultToArray($result) {
-        $list = array();
-        while ($i = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            array_push($list, $i);
-        }
-        return $list;
-    }
-
     function forumExists($forum_id) {
         $result = mysqli_query($this->db, "SELECT * FROM forums WHERE id = '" . $forum_id . "'");
 

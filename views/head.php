@@ -82,7 +82,7 @@
     </div>
     <div class="header-bottom my-2">
         <ul class="nav nav-tabs">
-<?php $menu = array("Home" => "", "Catalog" => isset($this->data['categories']) ? $this->data['categories'] : null, "Blog" => "blog", "About" => "about"); ?>
+<?php $menu = array("Home" => "", "Catalog" => isset($this->data['categories']) ? $this->data['categories'] : array(), "Blog" => "blog", "About" => "about"); ?>
             
 <?php foreach ($menu as $key => $value) { ?>
 <?php if(is_array($menu[$key])) { ?>
@@ -90,7 +90,7 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $key ?></a>
                 <div class="dropdown-menu">
 <?php foreach ($menu[$key] as $subkey => $submenu) { ?>
-                    <a class="dropdown-item" href="/parduotuve/<?php echo strtolower($key) . "/" . $submenu['name']; ?>"><?php echo $submenu["name"]; ?></a>
+                    <a class="dropdown-item" href="/parduotuve/<?php echo strtolower($key) . "/" . $submenu['id']; ?>"><?php echo $submenu["name"]; ?></a>
 <?php } ?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/parduotuve/<?php echo strtolower($key); ?>"><?php echo $key;?></a>

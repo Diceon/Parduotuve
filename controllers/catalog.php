@@ -7,9 +7,12 @@ class Catalog extends Controller {
 
         if (isset($args[1])) {
             $this->view->addData("products", $this->model->getProducts($args[1]));
+            $this->view->render('catalog/products');
+        } else {
+            $this->view->addData("categories", $this->model->getCategories());
+            $this->view->render('catalog/index');
         }
         
-        $this->view->render('catalog/index');
     }
 
 }

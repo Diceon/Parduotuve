@@ -4,7 +4,7 @@
         </aside>
 
         <div class="col-md-9 col-sm-12 row p-0 m-0 d-flex justify-content-start">
-<?php if (isset($this->data['products'])) { ?>
+<?php if (isset($this->data['products']) && count($this->data['products']) > 0) { ?>
 <?php foreach ($this->data['products'] as $key => $product) { ?>
             <div class="card col-lg-4 col-md-6 col-sm-12 p-0 my-1">
                 <a href="/parduotuve/product/<?php echo mb_strtolower($product['name']); ?>">
@@ -26,7 +26,10 @@
             </div>
 <?php } ?>
 <?php } else { ?>
-            <h3 class="mx-auto my-5">There are no products</h3>
+            <div class="mx-auto my-5 px-2 text-center">
+                <h2 class="font-weight-bold">There are no products in this catalog</h2>
+                <a href="/parduotuve/catalog/" class="d-inline-block mt-3"><button type="button" class="btn btn-lg btn-primary border">Go back</button></a>
+            </div>
 <?php } ?>
         </div>
     </div>

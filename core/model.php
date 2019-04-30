@@ -15,40 +15,41 @@ class Model {
         }
     }
 
+    function resultToArray($result) {
+        $list = array();
+        while ($i = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            array_push($list, $i);
+        }
+        return $list;
+    }
+
     function getCategories() {
 
         $result = mysqli_query($this->db, "SELECT * FROM categories");
 
-        if ($result && mysqli_num_rows($result) > 0) {
-
-            $categories = array();
-
-            while ($category = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                array_push($categories, $category);
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                return $this->resultToArray($result);
+            } else {
+                return array();
             }
-
-            return $categories;
         } else {
-            return array();
+            return mysqli_error($this->db);
         }
     }
 
-    function getProducts($category = NULL) {
+    function getProducts($category_id = NULL) {
 
-        $result = mysqli_query($this->db, "SELECT products.*, categories.name as 'category' FROM products LEFT JOIN categories ON categories.id = products.category_id" . ($category != NULL ? " WHERE category_id = (SELECT id FROM categories WHERE name = '" . $category . "') LIMIT 1" : ""));
+        $result = mysqli_query($this->db, "SELECT products.*, categories.name as 'category', categories.id as 'category_id' FROM products LEFT JOIN categories ON categories.id = products.category_id" . ($category_id != NULL ? " WHERE category_id = '" . $category_id . "' LIMIT 1" : ""));
 
         if ($result) {
-
-            $products = array();
-
-            while ($product = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                array_push($products, $product);
+            if (mysqli_num_rows($result) > 0) {
+                return $this->resultToArray($result);
+            } else {
+                return array();
             }
-            
-            return $products;
         } else {
-            echo mysqli_error($this->db);
-            return array();
+            return mysqli_error($this->db);
         }
     }
 

@@ -23,7 +23,7 @@
 <?php } ?>
 <?php } else { ?>
         <div class="my-5 text-center">
-            <h1 class="text-center font-weight-bold">No such forum</h1>
+            <h1 class="font-weight-bold">No such forum</h1>
             <a href="/parduotuve/blog/" class="d-inline-block mt-3"><button type="button" class="btn btn-lg btn-primary border">Go back</button></a>
         </div>
 <?php } ?>

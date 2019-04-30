@@ -9,10 +9,14 @@ class registerModel extends Model {
     function isUsernameUnique($username) {
         $result = mysqli_query($this->db, "SELECT  * FROM users WHERE username = '" . $username . "'");
 
-        if (mysqli_num_rows($result) > 0) {
-            return FALSE;
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                return FALSE;
+            } else {
+                return TRUE;
+            }
         } else {
-            return TRUE;
+            return mysqli_error($this->db);
         }
     }
 
@@ -22,7 +26,7 @@ class registerModel extends Model {
         if ($register_result) {
             return TRUE;
         } else {
-            return FALSE;
+            return mysqli_error($this->db);
         }
     }
 

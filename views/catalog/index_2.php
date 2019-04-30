@@ -3,7 +3,7 @@
 <?php include_once 'views/menu_categories.php'; ?>
         </aside>
 
-        <div class="col-md-9 col-sm-12 row p-0 m-0 d-flex justify-content-start">
+        <div class="col-md-9 col-sm-12 row p-0 m-0 d-flex justify-content-around">
 <?php if (isset($this->data['products'])) { ?>
 <?php foreach ($this->data['products'] as $key => $product) { ?>
             <div class="card col-lg-4 col-md-6 col-sm-12 p-0 my-1">
