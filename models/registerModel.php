@@ -6,16 +6,21 @@ class registerModel extends Model {
         parent::__construct();
     }
 
-    function register($username, $email, $password) {
-        $result = mysqli_query($this->db, "SELECT * FROM users WHERE username = '" . $username . "'");
-        if (mysqli_num_rows($result) === 0) {
-            $register_result = mysqli_query($this->db, "INSERT INTO users (username, email, password) VALUES ('" . $username . "', '" . $email . "', '" . $password . "')");
+    function isUsernameUnique($username) {
+        $result = mysqli_query($this->db, "SELECT  * FROM users WHERE username = '" . $username . "'");
 
-            if ($register_result) {
-                return TRUE;
-            } else {
-                return FALSE;
-            }
+        if (mysqli_num_rows($result) > 0) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    function register($username, $email, $password) {
+        $register_result = mysqli_query($this->db, "INSERT INTO users (username, email, password) VALUES ('" . $username . "', '" . $email . "', '" . $password . "')");
+
+        if ($register_result) {
+            return TRUE;
         } else {
             return FALSE;
         }
