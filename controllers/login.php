@@ -6,12 +6,13 @@ class Login extends Controller {
         parent::__construct();
 
         if (filter_has_var(INPUT_POST, 'username') && filter_has_var(INPUT_POST, 'password')) {
-            $login_result = $this->model->login(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING), filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
-            if ($login_result) {
-                $this->session->login($login_result['admin']);
+            $user_info = $this->model->login(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING), filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING));
+            if ($user_info) {
+                $this->session->login($user_info);
                 header('location: /parduotuve/');
             } else {
-                $this->view->render('login/index', 'Wrong username / password');
+                $this->view->addData('errors', ['Wrong username / password']);
+                $this->view->render('login/index');
             }
         } else {
             if (!$this->session->isLogged()) {

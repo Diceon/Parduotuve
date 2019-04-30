@@ -7,6 +7,7 @@ class Session {
     }
 
     function isLogged() {
+
         if (isset($_SESSION['isLogged']) && $_SESSION['isLogged'] === TRUE) {
             return TRUE;
         } else {
@@ -15,6 +16,7 @@ class Session {
     }
 
     function isAdmin() {
+
         if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === TRUE) {
             return TRUE;
         } else {
@@ -22,9 +24,22 @@ class Session {
         }
     }
 
-    function login($isAdmin = FALSE) {
-        $_SESSION['isLogged'] = TRUE;
-        $_SESSION['isAdmin'] = $isAdmin == 1 ? TRUE : FALSE;
+    function login($user_info) {
+
+        if (isset($user_info['id'])) {
+            $_SESSION['isLogged'] = TRUE;
+            $_SESSION['user_id'] = $user_info['id'];
+
+            if (isset($user_info['admin'])) {
+                $_SESSION['isAdmin'] = $user_info['admin'] == 1 ? TRUE : FALSE;
+            } else {
+                $_SESSION['isAdmin'] = FALSE;
+            }
+        }
+    }
+
+    function getUserId() {
+        return $_SESSION['user_id'];
     }
 
     function logout() {
