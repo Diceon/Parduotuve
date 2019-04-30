@@ -6,25 +6,31 @@
 <footer>
     <div class="footer-top container d-flex justify-content-around flex-column flex-md-row">
         <div class="about-us py-4 px-2 ">
-            <div class="text-white">123</div>
+            <div class="text-white h5">Site structure</div>
             <div>
-                Lorem ipsum...
+                <a href="/parduotuve/" class="text-decoration-none d-block">Home</a>
+                <a href="/parduotuve/catalog" class="text-decoration-none d-block">Catalog</a>
+                <a href="/parduotuve/blog" class="text-decoration-none d-block">Blog</a>
+                <a href="/parduotuve/about" class="text-decoration-none d-block">About us</a>
             </div>
         </div>
         <div class="about-us py-4 px-2">
-            <div class="text-white">
-                456
+            <div class="text-white h5">
+                Contact us
             </div>
             <div>
-                Lorem ipsum...
+                <p class="text-white-50 my-1 animate-icon" title="Email"><i class="far fa-envelope mr-1"></i> info@shop.com</p>
+                <p class="text-white-50 my-2 animate-icon" title="Phone"><i class="fas fa-phone mr-1"></i> +370 00 000</p>
+                <p class="text-white-50 my-1 animate-icon" title="Address"><i class="fas fa-map-marker-alt mr-1"></i> Lorem st. 00, Vilnius</p>
             </div>
         </div>
         <div class="about-us py-4 px-2">
-            <div class="text-white">
-                789
+            <div class="text-white h5">
+                Social
             </div>
             <div>
-                Lorem ipsum...
+                <a href="#" class="text-white animate-icon" title="Facebook"><i class="fab fa-facebook-square h3"></i></a>
+                <a href="#" class="text-white animate-icon" title="LinkedIn"><i class="fab fa-linkedin h3"></i></a>
             </div>
         </div>
     </div>

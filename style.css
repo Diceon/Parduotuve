@@ -102,3 +102,14 @@ footer .footer-bottom {
     background-color: #222222;
 }
 /*  FOOTER END    */
+
+
+/* ANIMATIONS BEGIN */
+i {
+    transition: transform .25s ease-out;
+}
+
+.animate-icon:hover i {
+    transform: scale(1.25);
+}
+/* ANIMATIONS END */
