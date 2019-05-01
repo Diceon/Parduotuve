@@ -34,8 +34,8 @@
                 <a href="/parduotuve/profile"><button type="button" class="btn btn-light"><i class="fas fa-user"></i> Profile</button></a>
                 <a href="/parduotuve/logout"><button type="button" class="btn btn-light"><i class="fas fa-sign-out-alt"></i> Logout</button></a>
 <?php } else { ?>
-                <a href="/parduotuve/login"><button type="button" class="btn btn-light">Login</button></a>
-                <a href="/parduotuve/register"><button type="button" class="btn btn-light">Register</button></a>
+                <a href="/parduotuve/login"><button type="button" class="btn btn-light"><i class="fas fa-sign-in-alt"></i> Login</button></a>
+                <a href="/parduotuve/register"><button type="button" class="btn btn-light"><i class="fas fa-user-plus"></i> Register</button></a>
 <?php } ?>
             </div>
         </nav>
@@ -51,22 +51,20 @@
             <div class="carousel-item active">
                 <img src="/parduotuve/img/header1.jpg" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h5>Model S | Tesla</h5>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/parduotuve/img/header2.jpg" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h5>Mountains</h5>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/parduotuve/img/header3.jpg" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h5>Clouds</h5>
+                <p>Cool, ey'?</p>
               </div>
             </div>
           </div>

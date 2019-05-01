@@ -6,7 +6,7 @@ class Register extends Controller {
         parent::__construct();
 
         if (!$this->session->isLogged()) {
-            if (filter_has_var(INPUT_POST, 'username') && filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'password') && filter_has_var(INPUT_POST, 'password2')) {
+            if ($this->isRegisterRequest()) {
 
                 $isValid = $this->isRegisterDataValid();
                 
@@ -28,6 +28,14 @@ class Register extends Controller {
             }
         } else {
             header('location: /parduotuve/');
+        }
+    }
+    
+    function isRegisterRequest() {
+        if (filter_has_var(INPUT_POST, 'username') && filter_has_var(INPUT_POST, 'email') && filter_has_var(INPUT_POST, 'password') && filter_has_var(INPUT_POST, 'password2')) {
+            return TRUE;
+        } else {
+            return FALSE;
         }
     }
 

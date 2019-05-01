@@ -4,7 +4,19 @@ class About extends Controller {
 
     function __construct($args = NULL) {
         parent::__construct();
-        $this->view->render('about/index');
+        
+        if (isset($args[1])) {
+            
+            switch ($args[1]) {
+                default:
+                    $this->view->render('error/index');
+                    break;
+            }
+            
+        } else {
+            $this->view->render('about/index');
+        }
+        
     }
 
 }

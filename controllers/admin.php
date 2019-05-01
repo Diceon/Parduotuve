@@ -6,7 +6,18 @@ class Admin extends Controller {
         parent::__construct();
 
         if ($this->session->isLogged() && $this->session->isAdmin()) {
-            $this->view->render('admin/index');
+
+            if (isset($args[1])) {
+
+                switch ($args[1]) {
+                    default:
+                        $this->view->render('error/index');
+                        break;
+                }
+                
+            } else {
+                $this->view->render('admin/index');
+            }
         } else {
             $this->view->render('error/index');
         }
