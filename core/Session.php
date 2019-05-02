@@ -28,8 +28,7 @@ class Session {
 
         if (isset($user_info['id'])) {
             $_SESSION['isLogged'] = TRUE;
-            $_SESSION['user_id'] = $user_info['id'];
-            $_SESSION['user_name'] = $user_info['username'];
+            $_SESSION['user_info'] = $user_info;
 
             if (isset($user_info['admin'])) {
                 $_SESSION['isAdmin'] = $user_info['admin'] == 1 ? TRUE : FALSE;

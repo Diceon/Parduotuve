@@ -18,7 +18,7 @@
             <input type="password" name="password" class="form-control" placeholder="Password" required>
         </div>
         <div class="form-group">
-            <input type="password" name="password2" class="form-control" placeholder="Password" required>
+            <input type="password" name="password2" class="form-control" placeholder="Confirm password" required>
         </div>
         <div class="form-check mb-2">
             <input type="checkbox" class="form-check-input" id="robot" required>
