@@ -16,9 +16,8 @@ class Model {
     }
     
     function handleError() {
-        if (mysqli_errno($this->db)) {
-            print_r("DB ERROR: %s\n", mysqli_error($this->db));
-            exit();
+        if (mysqli_error($this->db)) {
+            print_r("DB ERROR: %s\n", mysqli_errno($this->db));
         }
     }
 

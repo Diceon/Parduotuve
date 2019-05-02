@@ -21,7 +21,9 @@
 <?php if ($product['is_recommended']) { ?>
                     <p class="card-text text-center recommended">Recommended</p>
 <?php } ?>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Add to cart</button>
+                    <form action="/parduotuve/cart" method="post">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" name="cart_add" value="<?php echo $product['id']; ?>">Add to cart</button>
+                    </form>
                 </div>
             </div>
 <?php } ?>

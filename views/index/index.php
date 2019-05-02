@@ -22,7 +22,7 @@
                     <p class="card-text text-center recommended">Recommended</p>
 <?php } ?>
                     <form action="/parduotuve/cart" method="post">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" name="product" value="<?php echo $product['id']; ?>">Add to cart</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" name="cart_add" value="<?php echo $product['id']; ?>">Add to cart</button>
                     </form>
                 </div>
             </div>

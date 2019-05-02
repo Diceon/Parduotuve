@@ -26,7 +26,7 @@
                         <button type="button" class="btn btn-light mr-1 col-1">-</button>
                         <input type="number" class="form-control col-2" name="amount" value="1" min="0" max="10" placeholder="amount">
                         <button type="button" class="btn btn-light ml-1 col-1">+</button>
-                        <button type="submit" class="btn btn-primary col-3 mx-1" name="product" value="<?php echo $this->data['product']["id"]; ?>">Add to cart</button>
+                        <button type="submit" class="btn btn-primary col-3 mx-1" name="cart_add" value="<?php echo $this->data['product']["id"]; ?>">Add to cart</button>
                     </form>
                     <div class="my-2"><span class="font-weight-bold">Stock: </span><?php echo $this->data['product']["availability"]; ?></div>
                     <div class="my-2"><span class="font-weight-bold">Brand: </span><?php echo $this->data['product']["brand"]; ?></div>

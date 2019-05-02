@@ -60,7 +60,7 @@ class Session {
 
     function logout() {
         $_SESSION['isLogged'] = FALSE;
-        //session_destroy();
+        session_destroy();
     }
 
 }

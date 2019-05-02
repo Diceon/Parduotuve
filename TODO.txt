@@ -4,10 +4,10 @@
 
 add password hashing
 
-// Add shopping cart - Save method? - Database / session / local storage ???
+add validation to everything
 
 prepare admin page
 
 implement reply/edit to forum?
 
-logout - should you destroy session?
+logout - should you destroy session? No? - save products to cart?
