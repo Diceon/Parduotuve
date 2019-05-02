@@ -42,6 +42,22 @@ class Session {
         return $_SESSION['user_info']['id'];
     }
 
+    function getUserName() {
+        return isset($_SESSION['user_info']['username']) ? $_SESSION['user_info']['username'] : '';
+    }
+
+    function getUserEmail() {
+        return isset($_SESSION['user_info']['email']) ? $_SESSION['user_info']['email'] : '';
+    }
+
+    function getUserRegisterDate() {
+        return isset($_SESSION['user_info']['register_date']) ? $_SESSION['user_info']['register_date'] : '';
+    }
+
+    function updateUserInfo($user_info) {
+        $_SESSION['user_info'] = $user_info;
+    }
+
     function logout() {
         $_SESSION['isLogged'] = FALSE;
         //session_destroy();

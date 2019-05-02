@@ -1,5 +1,5 @@
 <div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 mx-auto m-5">
-<?php if (isset($this->data['errors'])) { ?>
+<?php if (isset($this->data['errors']) && is_array($this->data['errors'])) { ?>
 <?php foreach ($this->data['errors'] as $key => $error) { ?>
     <div class="alert alert-danger" role="alert">
         <?php echo $error; ?>

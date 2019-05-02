@@ -26,4 +26,20 @@ class profileModel extends Model {
         }
     }
 
+    function isPasswordCorrect($user_id, $password) {
+        $result = mysqli_query($this->db, "SELECT * FROM users WHERE id = '" . $user_id . "' AND password = '" . $password . "'");
+
+        if ($result) {
+            
+            if (mysqli_num_rows($result) > 0) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+            
+        } else {
+            return mysqli_error($this->db);
+        }
+    }
+
 }

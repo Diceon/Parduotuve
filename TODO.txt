@@ -2,6 +2,8 @@
 // Prevent access to core files
 // Add config file
 
+add password hashing
+
 // Add shopping cart - Save method? - Database / session / local storage ???
 
 prepare admin page

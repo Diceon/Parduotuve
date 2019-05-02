@@ -14,6 +14,13 @@ class Model {
             mysqli_set_charset($this->db, 'utf8');
         }
     }
+    
+    function handleError() {
+        if (mysqli_errno($this->db)) {
+            print_r("DB ERROR: %s\n", mysqli_error($this->db));
+            exit();
+        }
+    }
 
     function resultToArray($result) {
         $list = array();
@@ -21,6 +28,20 @@ class Model {
             array_push($list, $i);
         }
         return $list;
+    }
+
+    function getUserInfo($user_id) {
+        $result = mysqli_query($this->db, "SELECT * FROM users WHERE id = '" . $user_id . "'");
+
+        if ($result) {
+            if (mysqli_num_rows($result) > 0) {
+                return mysqli_fetch_array($result, MYSQLI_ASSOC);
+            } else {
+                return array();
+            }
+        } else {
+            $this->handleError();
+        }
     }
 
     function getCategories() {
@@ -34,7 +55,7 @@ class Model {
                 return array();
             }
         } else {
-            return mysqli_error($this->db);
+            $this->handleError();
         }
     }
 
@@ -49,7 +70,7 @@ class Model {
                 return array();
             }
         } else {
-            return mysqli_error($this->db);
+            $this->handleError();
         }
     }
 
