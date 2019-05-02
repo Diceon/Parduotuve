@@ -39,7 +39,7 @@ class Session {
     }
 
     function getUserId() {
-        return $_SESSION['user_id'];
+        return $_SESSION['user_info']['id'];
     }
 
     function logout() {
