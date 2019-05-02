@@ -51,7 +51,7 @@
             <div class="carousel-item active">
                 <img src="/parduotuve/img/header1.jpg" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Model S | Tesla</h5>
+                  <h5 class="text-shadow-1">Model S | Tesla</h5>
               </div>
             </div>
             <div class="carousel-item">
