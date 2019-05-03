@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2019 at 02:01 AM
+-- Generation Time: May 03, 2019 at 12:48 PM
 -- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -84,9 +84,7 @@ CREATE TABLE `forum_posts` (
 
 INSERT INTO `forum_posts` (`id`, `forum`, `user`, `name`, `message`, `date`) VALUES
 (1, 1, 1, 'Testing...', 'Hello World!', '2019-04-27 23:02:18'),
-(2, 1, 2, '321LMAO <?php echo 123; ?>', 'lasdadsadas\r\n<br>\r\n<br>\r\n<br>\r\n<br>', '2019-04-28 00:16:11'),
-(3, 1, 1, 'dbasbdasb', 'bas', '2019-04-29 23:48:58'),
-(4, 1, 2, 'hghh', 'fghfghfhfghf', '2019-04-29 23:49:21');
+(2, 1, 2, '321 <?php echo 123; ?>', 'Hi\r\n<br>\r\n<br>\r\n<br>\r\n<br>', '2019-04-28 00:16:11');
 
 -- --------------------------------------------------------
 
@@ -138,9 +136,21 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `admin`, `register_date`) VALUES
-(1, '123', '', '123', 1, '2019-04-15 20:27:26'),
-(2, '321', '', '321', 0, '2019-04-16 06:04:23'),
-(3, '4444444', 'asdas@asd', 'test', 0, '2019-04-29 22:58:08');
+(1, '123', 'Vardenis@gmail.com', '123', 1, '2019-04-15 20:27:26'),
+(2, '321', '', '321', 0, '2019-04-16 06:04:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_cart_products`
+--
+
+CREATE TABLE `user_cart_products` (
+  `id` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `product` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_lithuanian_ci;
 
 --
 -- Indexes for dumped tables
@@ -180,6 +190,14 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_cart_products`
+--
+ALTER TABLE `user_cart_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_user_id` (`user`),
+  ADD KEY `fk_product_products_id` (`product`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -199,7 +217,7 @@ ALTER TABLE `forums`
 -- AUTO_INCREMENT for table `forum_posts`
 --
 ALTER TABLE `forum_posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -214,6 +232,12 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `user_cart_products`
+--
+ALTER TABLE `user_cart_products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -221,7 +245,7 @@ ALTER TABLE `users`
 -- Constraints for table `forum_posts`
 --
 ALTER TABLE `forum_posts`
-  ADD CONSTRAINT `fk_forum_forums_id` FOREIGN KEY (`forum`) REFERENCES `forums` (`id`),
+  ADD CONSTRAINT `fk_forum_forum_id` FOREIGN KEY (`forum`) REFERENCES `forums` (`id`),
   ADD CONSTRAINT `fk_user_users_id` FOREIGN KEY (`user`) REFERENCES `users` (`id`);
 
 --
@@ -229,6 +253,13 @@ ALTER TABLE `forum_posts`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `fk_category_id_categories_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
+
+--
+-- Constraints for table `user_cart_products`
+--
+ALTER TABLE `user_cart_products`
+  ADD CONSTRAINT `fk_product_products_id` FOREIGN KEY (`product`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `fk_user_user_id` FOREIGN KEY (`user`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
