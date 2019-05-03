@@ -17,7 +17,7 @@
         <h1 class="text-center mt-3">Cart</h1>
         <ul class="list-group">
 <?php foreach ($this->data['products'] as $key => $product) { ?>
-            <li class="list-group-item my-1"><a href="/parduotuve/product/<?php echo $product['id']; ?>"><?php echo $product['name']; ?></a> - $<?php echo $product['price']; ?> x <?php echo $product['amount']; ?> <form action="/parduotuve/cart" method="post" class="d-inline   "><button type="submit" class="close" name="cart_remove" value="<?php echo $key; ?>"><span class="text-danger" aria-hidden="true">&times;</span></button></form></li>
+            <li class="list-group-item mb-1"><a href="/parduotuve/product/<?php echo $product['id']; ?>"><?php echo $product['name']; ?></a> - $<?php echo $product['price']; ?> x <?php echo $product['amount']; ?> <form action="/parduotuve/cart" method="post" class="d-inline   "><button type="submit" class="close" name="cart_remove" value="<?php echo $key; ?>"><span class="text-danger" aria-hidden="true">&times;</span></button></form></li>
 <?php } ?>
         </ul>
         <div class="mt-2 text-center">

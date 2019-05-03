@@ -40,6 +40,10 @@ class Cart extends Controller {
             array_push($errors, 'Incorrect amount');
         }
 
+        if (count($this->session->getUserCart()) >= 10) {
+            array_push($errors, "Max order amount reached");
+        }
+
 
         if (count($errors) == 0) {
             $this->session->cartAddProduct($this->model->getProduct($product_id), $amount);
@@ -52,10 +56,6 @@ class Cart extends Controller {
     function cartRemove() {
         $product_id = intval(filter_input(INPUT_POST, 'cart_remove'));
         $errors = array();
-
-        if ($product_id == 0) {
-            array_push($errors, 'Invalid product');
-        }
 
         if (count($errors) == 0) {
             $isRemoved = $this->session->cartRemoveProduct($product_id);

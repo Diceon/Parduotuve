@@ -4,8 +4,8 @@ class Session {
 
     function __construct() {
         session_start();
-        
-        if (!is_array($_SESSION['user_cart'])) {
+
+        if (!isset($_SESSION['user_cart'])) {
             $_SESSION['user_cart'] = array();
         }
     }
@@ -61,14 +61,14 @@ class Session {
     function updateUserInfo($user_info) {
         $_SESSION['user_info'] = $user_info;
     }
-    
+
     function cartAddProduct($product, $amount) {
         $product['amount'] = $amount;
         array_push($_SESSION['user_cart'], $product);
     }
-    
+
     function cartRemoveProduct($id) {
-        
+
         foreach ($_SESSION['user_cart'] as $key => $value) {
             if ($key == $id) {
                 unset($_SESSION['user_cart'][$key]);
@@ -77,7 +77,7 @@ class Session {
         }
         return FALSE;
     }
-    
+
     function getUserCart() {
         return $_SESSION['user_cart'];
     }
