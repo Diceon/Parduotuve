@@ -8,7 +8,7 @@
 <?php foreach ($this->data['categories'] as $key => $category) { ?>
             <div class="card col-lg-4 col-md-6 col-sm-12 p-0 my-1">
                 <a href="/parduotuve/catalog/<?php echo mb_strtolower($category['id']); ?>">
-                    <img src="/parduotuve/img/<?php echo isset($category['image']) ? ('categories/' . $product['image']) : 'no-image.png'; ?>" class="card-img-top p-4" alt="">
+                    <img src="/parduotuve/img/<?php echo isset($category['image']) ? ('categories/' . $category['image']) : 'no-image.png'; ?>" class="card-img-top p-4" alt="">
                 </a>
                 <div class="card-body">
                     <h5 class="card-title text-center"><a href="/parduotuve/catalog/<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></h5>
