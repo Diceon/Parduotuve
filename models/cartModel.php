@@ -6,6 +6,32 @@ class cartModel extends Model {
         parent::__construct();
     }
 
+    function doesProductExist($product_id) {
+        $result = mysqli_query($this->db, "SELECT * FROM products WHERE id = '" . $product_id . "' LIMIT 1");
+
+        if ($result) {
+
+            if (mysqli_num_rows($result) > 0) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } else {
+            $this->handleError();
+        }
+    }
+
+    function getProduct($product_id) {
+        $result = mysqli_query($this->db, "SELECT * FROM products WHERE id = '" . $product_id . "' LIMIT 1");
+
+        if ($result) {
+            return mysqli_fetch_array($result, MYSQLI_ASSOC);
+        } else {
+            $this->handleError();
+        }
+    }
+
+    // Unused
     function getUserCart($user_id) {
         $result = mysqli_query($this->db, "SELECT products.id, products.name, products.price, user_cart_products.amount FROM user_cart_products LEFT JOIN products ON user_cart_products.product = products.id WHERE user = '" . $user_id . "'");
 

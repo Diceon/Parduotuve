@@ -101,7 +101,7 @@
 <?php } ?>
 <?php } ?>
             <div class="ml-auto mx-3 d-flex">
-                <a href="/parduotuve/cart" class="m-auto"><i class="fas fa-shopping-cart">Cart (0)</i></a>
+                <a href="/parduotuve/cart" class="m-auto"><i class="fas fa-shopping-cart">Cart (<?php echo is_array($this->session->getUserCart()) ? count($this->session->getUserCart()) : '0'; ?>)</i></a>
             </div>
         </ul>
     </div>

@@ -4,6 +4,10 @@ class Session {
 
     function __construct() {
         session_start();
+        
+        if (!is_array($_SESSION['user_cart'])) {
+            $_SESSION['user_cart'] = array();
+        }
     }
 
     function isLogged() {
@@ -27,8 +31,8 @@ class Session {
     function login($user_info) {
 
         if (isset($user_info['id'])) {
-            $_SESSION['isLogged'] = TRUE;
             $_SESSION['user_info'] = $user_info;
+            $_SESSION['isLogged'] = TRUE;
 
             if (isset($user_info['admin'])) {
                 $_SESSION['isAdmin'] = $user_info['admin'] == 1 ? TRUE : FALSE;
@@ -57,10 +61,29 @@ class Session {
     function updateUserInfo($user_info) {
         $_SESSION['user_info'] = $user_info;
     }
+    
+    function cartAddProduct($product, $amount) {
+        $product['amount'] = $amount;
+        array_push($_SESSION['user_cart'], $product);
+    }
+    
+    function cartRemoveProduct($id) {
+        
+        foreach ($_SESSION['user_cart'] as $key => $value) {
+            if ($key == $id) {
+                unset($_SESSION['user_cart'][$key]);
+                return TRUE;
+            }
+        }
+        return FALSE;
+    }
+    
+    function getUserCart() {
+        return $_SESSION['user_cart'];
+    }
 
     function logout() {
         $_SESSION['isLogged'] = FALSE;
-        session_destroy();
     }
 
 }

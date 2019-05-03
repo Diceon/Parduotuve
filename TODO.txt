@@ -9,5 +9,3 @@ add validation to everything
 prepare admin page
 
 implement reply/edit to forum?
-
-logout - should you destroy session? No? - save products to cart?
