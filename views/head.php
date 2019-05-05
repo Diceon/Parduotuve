@@ -57,14 +57,14 @@
             <div class="carousel-item">
               <img src="/parduotuve/img/header2.jpg" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Mountains</h5>
+                <h5>-75% off!</h5>
               </div>
             </div>
             <div class="carousel-item">
               <img src="/parduotuve/img/header3.jpg" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Clouds</h5>
-                <p>Cool, ey'?</p>
+                <h5>...</h5>
+                <p>...</p>
               </div>
             </div>
           </div>
